@@ -1,0 +1,1 @@
+python -m torch.utils.collect_env
