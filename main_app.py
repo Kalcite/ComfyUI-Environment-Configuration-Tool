@@ -8,7 +8,7 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QTabWidget, QMessageBox
 from PyQt5.QtCore import QProcess, QDir, Qt
 from PyQt5.QtGui import QTextCursor, QIcon
 
-# #[新] 全局日志记录器
+# #全局日志记录器
 # TEMP_LOG_FILE = 'comfy_launcher.log.temp'
 # classStream = None # 设置全局以保持文件句柄打开
 
@@ -68,7 +68,7 @@ from PyQt5.QtGui import QTextCursor, QIcon
 #             except Exception as e:
 #                 self.terminal.write(f"Logger: 无法重命名日志文件: {e}\n")
 
-# --- 导入所有 Tab 类 ---
+# 导入所有Tab类
 from ui.tab_system_info import TabSystemInfo
 from ui.tab_project_path import TabProjectPath
 from ui.tab_venv import TabVenv
@@ -78,7 +78,7 @@ from ui.tab_launch import TabLaunch
 from ui.tab_git_clone import TabGitClone
 from ui.tab_addons import TabAddons
 
-# --- 全局常量 (可供 Tab 3 等模块导入) ---
+# 全局常量(供 Tab 3 等模块导入)
 CONFIG_FILE = 'config.ini'
 Tsinghua_Mirror = "https://pypi.tuna.tsinghua.edu.cn/simple"
 
@@ -95,18 +95,18 @@ class ComfyUI_AMD_Launcher(QMainWindow):
         self.setGeometry(100, 100, 1100, 900)
         self.setWindowIcon(QIcon("./icon.ico"))
 
-        # --- 共享状态变量 ---
+        # 共享状态变量
         self.project_dir = ""
         self.venv_dir = ""
         self.venv_dir_nv = "" # 预留更新插件使用
         self.python_interpreters = {} # 'path': 'version'
         self.git_exe_path = ""
         
-        # --- 共享配置 ---
+        # 共享配置
         self.config = configparser.ConfigParser()
         self.load_config()
 
-        # --- 初始化状态栏 (供插件使用) ---
+        # 初始化状态栏 (供插件使用)
         self.statusBar().showMessage("准备就绪。")
 
         self.initUI()
@@ -121,7 +121,7 @@ class ComfyUI_AMD_Launcher(QMainWindow):
         self.tabs = QTabWidget()
         self.setCentralWidget(self.tabs)
 
-        # --- 组装 Tabs ---
+        # 组装 Tabs
         # 实例化每个 Tab，并将主窗口(self)的引用传递给它们
         self.tab1 = TabSystemInfo(self)
         self.tab2 = TabProjectPath(self)
@@ -143,7 +143,7 @@ class ComfyUI_AMD_Launcher(QMainWindow):
         self.tabs.addTab(self.tab8, "8 Addons")
 
 
-    # --- 共享的配置方法 ---
+    # 共享的配置
     def load_config(self):
         if not os.path.exists(CONFIG_FILE):
             return
@@ -153,7 +153,7 @@ class ComfyUI_AMD_Launcher(QMainWindow):
             if 'Paths' in self.config:
                 self.project_dir = self.config['Paths'].get('ProjectDir', '')
                 self.venv_dir = self.config['Paths'].get('VenvDir', '')
-                self.venv_dir_nv = self.config['Paths'].get('VenvDir_NV', '') # 预留更新插件使用
+                self.venv_dir_nv = self.config['Paths'].get('VenvDir_NV', '') # 预留新插件使用
         except Exception as e:
             print(f"Error loading config: {e}")
         
@@ -166,7 +166,7 @@ class ComfyUI_AMD_Launcher(QMainWindow):
             if self.venv_dir:
                 self.config['Paths']['VenvDir'] = self.venv_dir
             if hasattr(self, 'venv_dir_nv') and self.venv_dir_nv:
-                self.config['Paths']['VenvDir_NV'] = self.venv_dir_nv # 预留更新插件使用
+                self.config['Paths']['VenvDir_NV'] = self.venv_dir_nv # 预留新插件使用
 
             if 'LaunchArgs' not in self.config:
                 self.config['LaunchArgs'] = {}
@@ -223,4 +223,5 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = ComfyUI_AMD_Launcher()
     window.show()
+
     sys.exit(app.exec_())
