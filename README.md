@@ -11,7 +11,7 @@ https://www.amd.com/en/resources/support-articles/release-notes/RN-AMDGPU-WINDOW
 ### 已更新最新插件可用于cuda环境和cpu环境部署，有需要要的可以从plugins下载  
 插件使用方法：从plugins下载或自己构建的py源码放在程序plugins文件夹中，自动识别在程序的addons选项卡中，勾选插件后点击加载按钮，如需卸载取消勾选后再次点击加载操作按钮  
 AMD平台：    
-1.从官网下载Hip SDK，选择rocm6.4及以上版本安装，rocm页面可以帮助你快速确认安装是否正确 2.选择comfyui项目的目录，如果没有可以从git clone页面尝试下载 3.虚拟环境中选择自动创建即可，下载完成后建议选择“手动选择venv目录”，选择comfyui_amd_venv目录，点击验证提示“venv 已确认”即成功 4.在启动参数中选择你需要的参数，如果不需要就留默认 5.点击启动即可  
+**1.**从官网下载Hip SDK，选择rocm6.4及以上版本安装，rocm页面可以帮助你快速确认安装是否正确 **2.**选择comfyui项目的目录，如果没有可以从git clone页面尝试下载 **3.**虚拟环境中选择自动创建即可，下载完成后建议选择“手动选择venv目录”，选择comfyui_amd_venv目录，点击验证提示“venv 已确认”即成功 **4.**在启动参数中选择你需要的参数，如果不需要就留默认 5.点击启动即可  
 N卡平台（插件）：  
 1.检查自己cuda支持版本：打开命令提示符（cmd），输入nvidia-smi，第一行驱动版本号旁边的便是支持的cuda版本，例如【Driver Version: 566.36         CUDA Version: 12.7】则说明最高支持cuda12.7的环境，可以选择安装cuda12.6，cuda11.8等版本，但要安装12.8等更高版本需要更新cuda 2.comfyui选择同amd平台 3.虚拟环境配置页面选择自动创建后选择pytorch版本，选择官方源下载，开始创建，完成后操作同amd平台 4.rocm选项卡为不可用状态，不必理会 5.启动同amd平台  
 纯CPU环境（插件）：  
