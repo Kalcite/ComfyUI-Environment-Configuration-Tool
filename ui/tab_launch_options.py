@@ -20,8 +20,6 @@ class TabLaunchOptions(QWidget):
             "【ComfyUI 启动参数说明】\n\n"
             "  --listen <地址>: 设置监听地址，默认 127.0.0.1 (本地访问)。\n"
             "  --port <端口>: 设置监听端口，默认 8188。\n"
-            "  其他参数: 可在此处添加任何 ComfyUI 接受的自定义参数...\n"
-            "(...此处省略您写的其他帮助文本...)\n"
             "--cpu：所有计算都在 CPU 上完成（速度较慢）。\n"
         )
         self.help_text_edit.setText(help_text)
@@ -62,4 +60,5 @@ class TabLaunchOptions(QWidget):
         if launch_args_config:
             self.listen_addr_lineedit.setText(launch_args_config.get('Listen', '127.0.0.1'))
             self.port_lineedit.setText(launch_args_config.get('Port', '8188'))
+
             self.other_args_lineedit.setText(launch_args_config.get('Other', ''))
