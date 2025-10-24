@@ -58,7 +58,7 @@ class TabSystemInfo(QWidget):
                 if "amd" in gpu.Name.lower() or "radeon" in gpu.Name.lower():
                     found_amd = True
             if not found_amd:
-                self.gpu_info_text.append("\n<b>[警告] 未检测到 AMD 显卡。此工具专为 AMD ROCm 设计。</b>")
+                self.gpu_info_text.append("\n<b>[警告] 未检测到 AMD 显卡。</b>")
         except Exception as e:
             self.gpu_info_text.append(f"检测显卡失败: {e}\n尝试使用 'wmic'...\n")
             try:
@@ -98,4 +98,5 @@ class TabSystemInfo(QWidget):
                 self.main_window.tab3.update_tab3_python_selector()
 
         except Exception as e:
+
             self.python_list_widget.addItem(f"查找 Python 失败: {e}")
