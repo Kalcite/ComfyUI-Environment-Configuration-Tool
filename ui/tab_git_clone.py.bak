@@ -197,4 +197,5 @@ class TabGitClone(QWidget):
             QMessageBox.information(self, "成功", "ComfyUI 仓库已成功克隆！")
 
         self.clone_button.setEnabled(True)
+
         self.git_browse_btn.setEnabled(True)
